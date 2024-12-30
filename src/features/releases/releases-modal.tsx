@@ -79,6 +79,10 @@ const ReleasesModal = () => {
 
   const watchReleaseType = watch("type", releaseOptions?.[0]);
 
+  const employeeReleaseOptions = releaseOptions?.filter(
+    (releaseOption) => releaseOption.name === "fechamento"
+  );
+
   return (
     <Modal
       onClose={onClear}
@@ -96,7 +100,11 @@ const ReleasesModal = () => {
               label="tipo de lançamento"
               value={field.value}
               isLoading={isLoadingReleaseOptions}
-              options={formatSelect(releaseOptions)}
+              options={formatSelect(
+                user?.profile.name === "funcionário"
+                  ? employeeReleaseOptions
+                  : releaseOptions
+              )}
               onChange={(options: TSelectOption) => field.onChange(options)}
             />
           )}
