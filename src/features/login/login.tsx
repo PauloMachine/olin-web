@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login, isAuthenticated, isLoading } = useAuth();
+  const { login, isLoading } = useAuth();
   const {
     control,
     handleSubmit,
@@ -22,9 +22,10 @@ const Login = () => {
 
   const onSubmit = async (data: TLogin) => {
     await login(data);
-    if (isAuthenticated) {
+    try {
+      await login(data);
       navigate("/releases");
-    } else {
+    } catch {
       toast.error(
         "Ocorreu um erro durante o acesso. Por favor, tente novamente."
       );
