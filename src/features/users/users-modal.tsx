@@ -5,10 +5,8 @@ import type { TUser } from "./users.types";
 import { useGetUsers, usePostUser } from "./users.hooks";
 import Input from "src/components/ui/input";
 import { useModal } from "src/components/ui/modal/modal.context";
-import Button from "src/components/ui/button";
 import Select from "src/components/ui/select";
 import { formatSelect } from "src/components/ui/select/select.utils";
-import Flex from "src/components/ui/flex";
 import { useGetProfiles } from "../profiles/profiles.hooks";
 import type { TSelectOption } from "src/components/ui/select/select.types";
 
