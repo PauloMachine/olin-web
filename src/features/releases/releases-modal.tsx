@@ -200,6 +200,7 @@ const ReleasesModal = () => {
                 placeholder="saída"
                 value={field.value}
                 icon="MdArrowDownward"
+                label="quatidade em litros"
                 onChange={(e) => field.onChange(e)}
                 onClear={() => setValue("fuel.outlet", "")}
               />
