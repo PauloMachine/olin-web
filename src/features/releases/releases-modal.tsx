@@ -100,7 +100,7 @@ const ReleasesModal = () => {
               value={field.value}
               isLoading={isLoadingReleaseOptions}
               options={formatSelect(
-                user?.profile.name === "funcionário"
+                user?.profile?.name === "funcionário"
                   ? employeeReleaseOptions
                   : releaseOptions
               )}

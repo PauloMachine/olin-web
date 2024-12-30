@@ -17,7 +17,7 @@ const Table = <T,>({ data = [], columns, isLoading = false }: TTable<T>) => {
     } else if (row.type && row.type.name === "saída") {
       return "#FFCD46";
     } else if (row.type && row.type.name === "correção") {
-      return "#E00088";
+      return "#FA4300";
     } else if (row.type && row.type.name === "fechamento") {
       const isRowDifferenceFuel = parseFloat(row.differenceFuel as string);
       if (!row.differenceFuel || isRowDifferenceFuel === 0) return "#4C8BF5";

@@ -13,6 +13,8 @@ import FuelsSelect from "../fuels/filters";
 import type { TRelease } from "./releases.types";
 import { generatePDF } from "src/utils/generatePDF";
 import type { ReactNode } from "react";
+import { StyledFilters } from "./releases.styles";
+import { useAuth } from "../auth/auth.context";
 
 type teste = {
   columns: ReadonlyArray<{
@@ -23,6 +25,8 @@ type teste = {
 };
 
 const Release = ({ columns }: teste) => {
+  const { user } = useAuth();
+
   const { gasStation } = useGasStationsContext();
   const { fuel } = useFuelsContext();
   const { pageSize } = usePaginationContext();
@@ -45,37 +49,36 @@ const Release = ({ columns }: teste) => {
     <Flex gap="50">
       <ReleasesModal />
       <ReleaseActions />
-      <Flex gap="25">
-        <Flex
-          gap="50"
-          wrap="wrap"
-          direction="row"
-          align="center"
-          justify="space-between"
-        >
+      {!(user?.profile?.name === "funcionário") && (
+        <Flex gap="25">
           <Flex
+            gap="50"
             wrap="wrap"
             direction="row"
-            justify="flex-start"
             align="center"
-            gap="25"
-            style={{ flex: 1 }}
+            justify="space-between"
           >
-            <GasStationsSelect />
-            <FuelsSelect />
-            <PaginationSelect />
+            <StyledFilters>
+              <GasStationsSelect />
+              <FuelsSelect />
+              <PaginationSelect />
+            </StyledFilters>
+            <Button
+              size="large"
+              variant="secondary"
+              style={{ flex: 1 }}
+              onClick={() => onPrint()}
+            >
+              imprimir
+            </Button>
           </Flex>
-          <Button
-            size="large"
-            variant="secondary"
-            style={{ flex: 1 }}
-            onClick={() => onPrint()}
-          >
-            imprimir
-          </Button>
+          <Table
+            data={releases}
+            columns={[...columns]}
+            isLoading={isFetching}
+          />
         </Flex>
-        <Table data={releases} columns={[...columns]} isLoading={isFetching} />
-      </Flex>
+      )}
     </Flex>
   );
 };

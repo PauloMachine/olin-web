@@ -24,8 +24,8 @@ export const usePostRelease = () => {
 };
 
 export const useGetReleases = (params: TReleaseParams) => {
-  const queryKey = ["releases", params];
   const { fuelId, gasStationId, pageSize } = params;
+  const queryKey = ["releases", String(fuelId + gasStationId + pageSize)];
 
   return useQuery<TRelease[], Error>({
     queryKey,

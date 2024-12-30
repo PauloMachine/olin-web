@@ -1,9 +1,11 @@
 import Button from "src/components/ui/button";
 import Flex from "src/components/ui/flex";
 import { useModal } from "src/components/ui/modal/modal.context";
+import { useAuth } from "../auth/auth.context";
 
 const ReleasesActions = () => {
   const { openModal } = useModal();
+  const { user } = useAuth();
 
   return (
     <Flex
@@ -11,7 +13,7 @@ const ReleasesActions = () => {
       wrap="wrap"
       align="center"
       direction="row"
-      justify="flex-end"
+      justify={user?.profile?.name === "funcionário" ? "center" : "flex-end"}
     >
       <Button size="large" variant="primary" onClick={openModal}>
         + lançamento
