@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login, isError } = useAuth();
+  const { login, isAuthenticated, isLoading } = useAuth();
   const {
     control,
     handleSubmit,
@@ -22,7 +22,7 @@ const Login = () => {
 
   const onSubmit = async (data: TLogin) => {
     await login(data);
-    if (!isError) {
+    if (isAuthenticated) {
       navigate("/releases");
     } else {
       toast.error(
@@ -84,8 +84,9 @@ const Login = () => {
         </Flex>
       </Flex>
       <Button
-        variant="primary"
         size="large"
+        variant="primary"
+        isLoading={isLoading}
         onClick={handleSubmit(onSubmit)}
         style={{ maxWidth: 300 }}
       >
