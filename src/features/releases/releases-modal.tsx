@@ -57,7 +57,6 @@ const ReleasesModal = () => {
       const payload = {
         ...data,
         name: user?.name || data.name,
-        gasStation,
       };
 
       await postReleaseMutate(payload);
