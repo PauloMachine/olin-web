@@ -4,6 +4,7 @@ import * as MdIcons from "react-icons/md";
 export type TInput = {
   label?: string;
   value?: string;
+  type?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClear?: () => void;
   placeholder?: string;

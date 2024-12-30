@@ -10,6 +10,7 @@ const Input = ({
   onChange,
   onClear,
   style,
+  type = "text",
   placeholder = "",
   debounceDelay = 300,
   icon = "MdSearch",
@@ -35,7 +36,7 @@ const Input = ({
         )}
 
         <StyledInput
-          type="text"
+          type={type}
           value={value}
           placeholder={placeholder}
           onChange={onChange}

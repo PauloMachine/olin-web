@@ -64,6 +64,7 @@ const Login = () => {
             <Input
               icon="MdPassword"
               placeholder="senha"
+              type="password"
               value={field.value}
               onChange={(e) => {
                 field.onChange(e);
