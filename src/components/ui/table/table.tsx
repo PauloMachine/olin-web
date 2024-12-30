@@ -77,11 +77,7 @@ const Table = <T,>({ data = [], columns, isLoading = false }: TTable<T>) => {
         </tbody>
       </StyledTable>
       {data?.length === 0 && (
-        <Flex
-          py="50"
-          justify="flex-end"
-          style={{ border: "1px solid #eee", marginTop: -1 }}
-        >
+        <Flex py="50" justify="flex-end">
           <Typography color="#bbb">
             Sem nenhuma informação para os filtros selecionados
           </Typography>
