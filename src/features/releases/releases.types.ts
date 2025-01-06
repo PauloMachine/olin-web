@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { TFuel } from "../fuels/fuels.types";
 import type { TGasStation } from "../gas-stations/gas-stations.types";
 
@@ -30,4 +31,12 @@ export type TRelease = {
   gasStation: TGasStation;
   totalFuel?: string;
   differenceFuel?: string;
+};
+
+export type TReleaseColumns = {
+  columns: ReadonlyArray<{
+    header: string;
+    accessor: string;
+    render?: (row: TRelease) => ReactNode;
+  }>;
 };

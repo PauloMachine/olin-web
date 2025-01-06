@@ -10,21 +10,12 @@ import Button from "src/components/ui/button";
 import ReleasesModal from "./releases-modal";
 import GasStationsSelect from "../gas-stations/filters";
 import FuelsSelect from "../fuels/filters";
-import type { TRelease } from "./releases.types";
+import type { TReleaseColumns } from "./releases.types";
 import { generatePDF } from "src/utils/generatePDF";
-import type { ReactNode } from "react";
 import { StyledFilters } from "./releases.styles";
 import { useAuth } from "../auth/auth.context";
 
-type teste = {
-  columns: ReadonlyArray<{
-    header: string;
-    accessor: string;
-    render?: (row: TRelease) => ReactNode;
-  }>;
-};
-
-const Release = ({ columns }: teste) => {
+const Release = ({ columns }: TReleaseColumns) => {
   const { user } = useAuth();
 
   const { gasStation } = useGasStationsContext();
