@@ -21,7 +21,6 @@ const Login = () => {
   } = useForm<TLogin>();
 
   const onSubmit = async (data: TLogin) => {
-    await login(data);
     try {
       await login(data);
       navigate("/releases");
